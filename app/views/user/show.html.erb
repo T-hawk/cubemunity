@@ -1,0 +1,14 @@
+<%= stylesheet_link_tag 'user' %>
+<% provide(:title, @user.username) %>
+<h1>
+  <%= @user.username %>
+</h1>
+<h2>
+  <% if @user.personal_best %>
+    Personal Best:
+    <%= @user.personal_best %>
+  <% end %>
+</h2>
+
+<h2>Posts</h2>
+<%= render "layouts/posts" %>

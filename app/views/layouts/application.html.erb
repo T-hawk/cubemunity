@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cubemunity</title>
+    <title><%= yield(:title) %></title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,13 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/header", user: @user %>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <div class="content">
+      <%= yield %>
+    </div>
+    <% console %>
   </body>
 </html>

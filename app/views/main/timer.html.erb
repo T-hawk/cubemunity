@@ -1,0 +1,30 @@
+<%= provide(:title, "Cubemunity | Timer") %>
+
+<%= stylesheet_link_tag "timer.css" %>
+<%= javascript_include_tag "home.js" %>
+
+<h1>Scramble:</h1><h1 id="scramble"></h1>
+<div class="main">
+  <h1 id="timer" class="time">0:0:0.00</h1>
+</div>
+<% if @signed_in_user %>
+  <%= button_tag "Manual Personal Best", type: "button", id: "manual_personal_best" %>
+<% end %>
+
+<h1>Times:</h1>
+<div id="timeData" class="time">
+</div>
+
+<h1>Average of times</h1>
+
+<h1 id="averageOfTimes" class="time"></h1>
+<br>
+<h1>Current Average of 5</h1>
+
+<h1 id="averageOfFive" class="time"></h1>
+
+<% if @signed_in_user %>
+  <%= content_tag :div, class: "personal_best", data: { personal_best: @signed_in_user.personal_best } do %>
+<% end %>
+
+<% end %>

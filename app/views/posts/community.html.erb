@@ -1,0 +1,9 @@
+<%= provide(:title, "Cubemunity | Community") %>
+
+<%= render "layouts/posts" %>
+
+<% if @signed_in_user %>
+  <%= render "layouts/new" %>
+<% else %>
+  <h3>Sign in or sign up to post</h3>
+<% end %>

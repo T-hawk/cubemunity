@@ -1,0 +1,43 @@
+<%= provide(:title, "FCS") %>
+<h1>Fideles Christian School Cubing Club</h1>
+<h2>General Method</h2>
+<ol>
+  <div class="fcs">
+    <li>The first thing we will do is assemble the white cross at the bottom of the cube.</li>
+    <%= image_tag("white_cross.png", :alt => "white_cross feed") %>
+    <li>Next, we will solve f2l (first two layers).</li>
+    <%= image_tag("f2l.svg", :alt => "f2l feed") %>
+    <li>After this, we will orient the yellow edges to resemble a cross</li>
+    <%= image_tag("yellow_cross.png", :alt => "yellow_cross feed") %>
+    <li>Then we will finish the yellow side so it is completely yellow.</li>
+    <%= image_tag("oll.png", :alt => "oll feed") %>
+    <li>Next, we will permute the last layer.</li>
+    <%= image_tag("pll.png", :alt => "pll feed") %>
+    <li>We are done!</li>
+  </div>
+</ol>
+<h2>Algorithms</h2>
+<p>When solving the Rubik's cube, you need to understand the notation of the cube. 
+   In other words, how to understand "directions" on an algorithm.</p>
+<p>The general idea of cube notation is: a letter represents a side, 
+   if the letter doesn't have an apostrophie ('), turn clockwise, if the letter has an apostrophie ('), turn counter-clockwise.</p>
+<p>For example: R' means turn the right side counter-clockwise</p>
+<ul>
+  <li>R: right side clockwise</li>
+  <li>R': right side counter-clockwise</li>
+  <br>
+  <li>L: left side clockwise</li>
+  <li>L': left side counter-clockwise</li>
+  <br>
+  <li>U: up side clockwise</li>
+  <li>U': up side counter-clockwise</li>
+  <br>
+  <li>D: down side clockwise</li>
+  <li>D': down side counter-clockwise</li>
+  <br>
+  <li>F: front side clockwise</li>
+  <li>F': front side counter-clockwise</li>
+  <br>
+  <li>B: back side clockwise</li>
+  <li>B': back side counter-clockwise</li>
+</ul>

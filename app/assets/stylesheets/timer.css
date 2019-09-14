@@ -1,0 +1,23 @@
+.time {
+  color: black;
+  font-family: 'Inconsolata', monospace;
+}
+
+#timeData {
+  font-size: 2rem;
+  color: white;
+  background: linear-gradient( #119dcc, #8c4eff);
+  text-align: center;
+
+  margin-left: 5%;
+
+  height: 400px;
+  width: 200px;
+  overflow: auto;
+}
+
+#timer {
+  color: black;
+  font-size: 10rem;
+  text-align: center;
+}

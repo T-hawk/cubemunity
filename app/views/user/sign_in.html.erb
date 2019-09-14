@@ -1,0 +1,23 @@
+<% provide(:title, "Sign In") %>
+<%= stylesheet_link_tag "form.css" %>
+<div class="form">
+  <%= form_for(@user, url: "/sessions/create") do |f| %>
+    <br>
+    <%= f.label :email %>
+    <br>
+    <%= f.text_field :email %>
+    <br>
+    <br>
+    <%= f.label :password %>
+    <br>
+    <%= f.text_field :password %>
+    <br>
+    <br>
+    <br>
+    <%= f.submit "Sign In" %>
+    <%= f.label :remember_me, class: "checkbox inline" do %>
+      <%= f.check_box :remember_me %>
+      <span>Remember me on this computer</span>
+    <% end %>
+  <% end %>
+<div>

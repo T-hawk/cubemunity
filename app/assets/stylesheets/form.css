@@ -1,0 +1,41 @@
+.form input {
+  border: none;
+  background: #457fca;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  border-radius: 100px;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 5px;
+
+  width: 50% !important;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+
+.form input[type=submit] {
+  width: 70%;
+  background: #457fca;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5691c8, #457fca);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5691c8, #457fca); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  cursor: pointer !important;
+}
+
+.form input[type=submit]:hover {
+  background: #9D50BB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.form span {
+  font-size: 1rem;
+}
+
+.form {
+  width: 100%;
+  display: block;
+  font-size: 1.5rem;
+  text-align: center;
+}

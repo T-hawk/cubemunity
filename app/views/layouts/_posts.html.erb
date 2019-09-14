@@ -1,0 +1,5 @@
+<% @posts.each do |post| %>
+  <h3 class="title"><%= post[:title] %></h3>
+  <%= link_to "#{post.user.username}", "/user/#{post[:user_id]}" %>
+  <p class="content"><%= post[:content] %></p>
+<% end %>
