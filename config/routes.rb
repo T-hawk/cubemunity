@@ -1,15 +1,27 @@
 Rails.application.routes.draw do
   root "main#home"
+
+  # User
   get "user/new"
   get "user/sign_in"
   get "user/:user_id", to: "user#show", as: :user
   post "user/create", as: :users
   post "timer/pb", to: "user#new_pb"
-  post "user/logout", to: "sessions#destroy"
+
+  # Sessions
   post "sessions/create", to: "sessions#create"
-  get "/timer" => "main#timer"
+  post "user/logout", to: "sessions#destroy"
+
+  # Posts
+  get "post/:post_id", to: "posts#show", as: :post
   get "/community" => "posts#community"
   post "/community/new" => "posts#new"
+
+  # Comments
+  post "/comment/new" => "comments#new"
+
+  # Main
+  get "/timer" => "main#timer"
   get "/fcs" => "main#fcs"
 
   resources :user

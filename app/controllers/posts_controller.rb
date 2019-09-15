@@ -3,6 +3,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def show
+    @post = Post.find(params[:post_id])
+    @comments = @post.comments
+  end
+
   def new
     @post = @signed_in_user.posts.create(post_params)
     if @post.save

@@ -1,9 +1,13 @@
-<%= form_for(:post, url: { action: "new" }) do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<%= form_for(yield(:type).downcase.to_sym, url: { controller: "#{yield(:type).downcase}s", action: "new" }) do |f| %>
+  <% if yield(:type) != "Comment" %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  <% else %>
+    <%= hidden_field_tag :post_id, @post.id %>
+  <% end %>
   <br>
   <%= f.label :content %>
   <%= f.text_field :content %>
   <br>
-  <%= f.submit "Make Post" %>
+  <%= f.submit "Make #{yield(:type)}" %>
 <% end %>

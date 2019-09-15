@@ -8,12 +8,13 @@ class User < ApplicationRecord
   validates_presence_of :username, :email, :password
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def remember
-    update_attribute(:remember_digest, SecureRandom.uuid)
+    update_attribute(:remember_token, SecureRandom.uuid)
   end
 
   def forget
-    update_attribute(:remember_digest, nil)
+    update_attribute(:remember_token, nil)
   end
 end

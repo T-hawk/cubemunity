@@ -1,0 +1,20 @@
+<% provide(:title, @post.title) %>
+<%= provide(:type, "Comment") %>
+
+<h1>
+  <%= @post.title %>
+  <%= link_to @post.user.username, @post.user %>
+</h1>
+<p>
+  <%= @post.content %>
+</p>
+
+<% @comments.each do |comment| %>
+  <ul><%= comment.content %> <%= link_to comment.user.username, comment.user %></ul>
+<% end %>
+
+<% if @signed_in_user %>
+  <%= render "layouts/new" %>
+<% else %>
+  <h3>Sign in or sign up to comment</h3>
+<% end %>
