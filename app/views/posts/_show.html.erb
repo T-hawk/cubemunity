@@ -1,0 +1,13 @@
+<% @posts.each do |post| %>
+  <% @post = post %>
+  <h3 class="title"><%= link_to "#{@post[:title]}", @post %>  <%= link_to @post.user.username, @post.user %></h3>
+  <p>
+    <%= post.likes.count %> <%= (post.likes.count) == 1 ? "like" : "likes" %>
+  </p>
+  <% if @signed_in_user %>
+    <%= button_to "Like", { :controller => "likes", :action => "create", :post_id => @post.id }, :method => :post %>
+  <% end %>
+  <p class="content"><%= @post[:content] %></p>
+  <%= render "comment/show" %>
+  <%= render "comment/new", :params => { :post_id => @post.id } %>
+<% end %>

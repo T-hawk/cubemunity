@@ -1,0 +1,7 @@
+<%= form_for(:comment, url: { controller: "comments", action: "new" }) do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit "Make Comment" %>
+  <%= hidden_field_tag :post_id, params[:post_id] %>
+<% end %>

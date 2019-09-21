@@ -1,0 +1,10 @@
+<%= form_for(:post, url: { controller: "posts", action: "new" }) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= hidden_field_tag :post_id, params[:post_id] %>
+  <br>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit "Make Post" %>
+<% end %>

@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   # Comments
   post "/comment/new" => "comments#new"
 
+  # Likes
+  post "/like" => "likes#create"
+
   # Main
   get "/timer" => "main#timer"
   get "/fcs" => "main#fcs"

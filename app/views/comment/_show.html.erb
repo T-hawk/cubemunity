@@ -1,0 +1,3 @@
+<% @post.comments.each do |comment| %>
+  <h4><%= comment.content %><% link_to comment.user.username, comment.user %></h4>
+<% end %>
