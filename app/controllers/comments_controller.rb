@@ -6,15 +6,14 @@ class CommentsController < ApplicationController
     @comment.post_id = params[:post_id]
     if @comment.save
       flash[:success] = "Comment successfully saved"
-      redirect_to @comment.post
+      redirect_back fallback_location: root_path
     else
       flash[:danger] = "Comment unsuccessfully saved"
-      redirect_to @comment.post
+      redirect_back fallback_location: root_path
     end
   end
 
   def comment_params
-    pp "Content: #{params[:comment][:content]}"
-    params.require(:comment).permit(:content, :post_id)
+    params.require(:comment).permit(:content)
   end
 end

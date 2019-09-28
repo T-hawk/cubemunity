@@ -10,6 +10,6 @@ RSpec.describe Post, type: :model do
   describe Post do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_presence_of(:content) }
-    it { is_expected.to validate_presence_of(:user_id) }
+    it { should belong_to(:user) }
   end
 end

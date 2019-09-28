@@ -1,14 +1,14 @@
 class LikesController < ApplicationController
   before_action :get_post
 
-  def create()
+  def create
     if !already_liked?
       @post.likes.create(user_id: @signed_in_user.id)
     end
     redirect_to @post
   end
 
-  def get_post()
+  def get_post
     @post = Post.find(params[:post_id])
   end
 
