@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_213810) do
+ActiveRecord::Schema.define(version: 2019_09_29_201903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,22 @@ ActiveRecord::Schema.define(version: 2019_09_18_213810) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "personal_bests", force: :cascade do |t|
+    t.string "two_by_two"
+    t.string "three_by_three"
+    t.string "four_by_four"
+    t.string "five_by_five"
+    t.string "six_by_six"
+    t.string "seven_by_seven"
+    t.string "megaminx"
+    t.string "pyraminx"
+    t.string "skewb"
+    t.string "clock"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -46,7 +62,6 @@ ActiveRecord::Schema.define(version: 2019_09_18_213810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_token"
-    t.string "personal_best"
   end
 
 end

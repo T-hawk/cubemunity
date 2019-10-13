@@ -11,9 +11,10 @@ RSpec.describe CommentsController, type: :controller do
 
     context "with valid attributes" do
       it "creates new comment" do
-        @user = User.new(FactoryGirl.attributes_for(:user))
-        @user.save
-        session[:user_id] = @user.id
+        # @user = User.new(FactoryGirl.attributes_for(:user))
+        # @user.save
+        # session[:user_id] = @user.id
+        signed_in_user
         @post = @user.posts.create(FactoryGirl.attributes_for(:post))
         @post.save
 
@@ -24,15 +25,11 @@ RSpec.describe CommentsController, type: :controller do
 
     context "with invalid attributes" do
       it "does not creates new comment" do
-        @user = User.new(FactoryGirl.attributes_for(:user))
-        @user.save
+        signed_in_user
         @post = @user.posts.create(FactoryGirl.attributes_for(:post))
         @post.save
 
-        session[:user_id] = @user.id
-
         post :new, params: { comment: FactoryGirl.attributes_for(:invalid_comment), :post_id => @post.id }
-        # post :new, params: { comment: { content: FactoryGirl.attributes_for(:invalid_comment), post_id: @post.id } }
         expect(Comment.count).to eq(0)
       end
     end

@@ -3,7 +3,21 @@
 <%= stylesheet_link_tag "timer.css" %>
 <%= javascript_include_tag "home.js" %>
 
+<% @puzzles = {
+  "2x2" => "two_by_two",
+  "3x3" => "three_by_three",
+  "4x4" => "five_by_five",
+  "5x5" => "five_by_five",
+  "6x6" => "six_by_six",
+  "7x7" => "seven_by_seven",
+  "Megaminx" => "megaminx",
+  "Pyranminx" => "pyraminx",
+  "Skewb" => "skewb",
+  "Clock" => "clock"
+} %>
+
 <h1>Scramble:</h1><h1 id="scramble"></h1>
+<%= select_tag "puzzle_name", options_for_select(@puzzles, "three_by_three") %>
 <div class="main">
   <h1 id="timer" class="time">0:0:0.00</h1>
 </div>
@@ -24,7 +38,7 @@
 <h1 id="averageOfFive" class="time"></h1>
 
 <% if @signed_in_user %>
-  <%= content_tag :div, class: "personal_best", data: { personal_best: @signed_in_user.personal_best } do %>
+  <%= content_tag :div, class: "personal_bests", data: { personal_bests: @signed_in_user.personal_bests } do %>
 <% end %>
 
 <% end %>

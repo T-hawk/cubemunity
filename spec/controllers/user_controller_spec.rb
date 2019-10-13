@@ -22,4 +22,14 @@ RSpec.describe UserController, type: :controller do
       end
     end
   end
+
+  # describe "POST #new_pb" do
+  #   it "updates personal best" do
+  #     signed_in_user
+  #     @personal_best = FactoryGirl.attributes_for(:personal_best)[:personal_best]
+  #     post :new_pb, params: { personal_best: @personal_best }
+
+  #     expect(@personal_best).to eq(User.find(session[:user_id]).personal_best)
+  #   end
+  # end
 end

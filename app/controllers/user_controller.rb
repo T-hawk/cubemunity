@@ -26,10 +26,6 @@ class UserController < ApplicationController
     @user = User.new
   end
 
-  def new_pb
-    User.find(@signed_in_user[:id]).update_attribute(:personal_best, params[:personal_best])
-  end
-
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end

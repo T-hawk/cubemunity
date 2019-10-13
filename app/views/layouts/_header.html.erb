@@ -4,7 +4,7 @@
   <%= link_to "Cube Timer", "/timer" %>
   <% if @signed_in_user %>
     <%= button_to "Logout", { :controller => "sessions", :action => "destroy" }, { :class => "push_right", :id => "logout" } %>
-    <%= link_to @signed_in_user.username, "/user/#{@signed_in_user.id}" %>
+    <%= link_to user_gravatar(@signed_in_user), "/user/#{@signed_in_user.id}" %>
   <% else %>
     <%= link_to "Sign up!", "/user/new", :class => "push_right", :id => "sign_up" %>
     <%= link_to "Sign in", "/user/sign_in", :id => "sign_in" %>

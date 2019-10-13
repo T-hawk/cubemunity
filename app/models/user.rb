@@ -7,9 +7,14 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates_presence_of :username, :email, :password
 
+  has_one :personal_bests, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  after_save do
+    self.create_personal_bests
+  end
 
   def remember
     update_attribute(:remember_token, SecureRandom.uuid)

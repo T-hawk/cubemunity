@@ -11,9 +11,7 @@ RSpec.describe PostsController, type: :controller do
     
     context "with valid attributes" do
       it "create new post" do
-        @user = User.new(FactoryGirl.attributes_for(:user))
-        @user.save
-        session[:user_id] = @user.id
+        signed_in_user
         post :new, params: { post: FactoryGirl.attributes_for(:post) }
         expect(Post.count).to eq(1)
       end
@@ -21,9 +19,7 @@ RSpec.describe PostsController, type: :controller do
 
     context "with invalid attributes" do
       it "does not create new post" do
-        @user = User.new(FactoryGirl.attributes_for(:user))
-        @user.save
-        session[:user_id] = @user.id
+        signed_in_user
         post :new, params: { post: FactoryGirl.attributes_for(:invalid_post) }
         expect(Post.count).to eq(0)
       end
