@@ -63,10 +63,6 @@ body {
   color: black;
 }
 
-.content {
-  padding-left: 10px;
-}
-
 #logout {
   border: none;
   height: 100%;
@@ -113,4 +109,20 @@ img {
 .profile-pic {
   border-radius: 100px;
   width: 50px;
+}
+
+input[type=submit] {
+  border-radius: 100px;
+  background: linear-gradient(90deg, #119dcc, #8c4eff);
+  color: white;
+}
+
+#logout {
+  border-radius: 0px;
+  background: none;
+}
+
+#logout:hover {
+  background-color: #ddd;
+  color: black;
 }

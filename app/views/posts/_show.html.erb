@@ -1,13 +1,17 @@
 <% @posts.each do |post| %>
   <% @post = post %>
-  <h3 class="title"><%= link_to "#{@post[:title]}", @post %>  <%= link_to @post.user.username, @post.user %></h3>
-  <p>
-    <%= post.likes.count %> <%= (post.likes.count) == 1 ? "like" : "likes" %>
-  </p>
-  <% if @signed_in_user %>
-    <%= button_to "Like", { :controller => "likes", :action => "create", :post_id => @post.id }, :method => :post %>
-  <% end %>
-  <p class="content"><%= @post[:content] %></p>
-  <%= render "comment/show" %>
-  <%= render "comment/new", :params => { :post_id => @post.id } %>
+  <div class="posts-and-comments">
+    <h3 class="title"><%= link_to "#{@post[:title]}", @post %> </h3>  <%= link_to user_gravatar(@post.user), @post.user %><%= link_to @post.user.username, @post.user %>
+    <p>
+      <%= post.likes.count %> <%= (post.likes.count) == 1 ? "like" : "likes" %>
+    </p>
+    <% if @signed_in_user %>
+      <%= button_to "&#128077;".html_safe, { :controller => "likes", :action => "create", :post_id => @post.id }, :method => :post, :id => "like" %>
+    <% end %>
+    <p class="content"><%= @post[:content] %></p>
+    <br>
+    <%= render "comment/show" %>
+    <%= render "comment/new", :params => { :post_id => @post.id } %>
+  </div>
+  <br>
 <% end %>

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "user/sign_in"
   get "user/:user_id", to: "user#show", as: :user
   post "user/create", as: :users
+  post "user/follow", to: "user#follow"
+  post "user/unfollow", to: "user#unfollow"
 
   # Personal Best
   post "timer/pb", to: "personal_bests#change"

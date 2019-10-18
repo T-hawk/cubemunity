@@ -8,6 +8,11 @@ module LetDeclarations
     @user.save
     session[:user_id] = @user.id
   }
+
+  let(:secondary_user) {
+    @other_user = User.new(FactoryGirl.attributes_for(:user))
+    @other_user.save
+  }
 end
 
 RSpec.configure do |config|

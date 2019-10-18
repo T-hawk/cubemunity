@@ -11,6 +11,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :follows
+
+  has_many :follower_relationships, foreign_key: :following_id, class_name: "Follow"
+  has_many :followers, through: :follower_relationships, source: :follower
+
+  has_many :following_relationships, foreign_key: :user_id, class_name: "Follow"
+  has_many :following, through: :following_relationships, source: :following
 
   after_save do
     self.create_personal_bests
@@ -22,5 +29,17 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_token, nil)
+  end
+
+  def already_following?(user)
+    already_following = false
+
+    user.followers.each do |f|
+      if f.id == id
+        already_following = true
+      end
+    end
+
+    already_following
   end
 end
