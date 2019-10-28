@@ -11,9 +11,6 @@ RSpec.describe CommentsController, type: :controller do
 
     context "with valid attributes" do
       it "creates new comment" do
-        # @user = User.new(FactoryGirl.attributes_for(:user))
-        # @user.save
-        # session[:user_id] = @user.id
         signed_in_user
         @post = @user.posts.create(FactoryGirl.attributes_for(:post))
         @post.save

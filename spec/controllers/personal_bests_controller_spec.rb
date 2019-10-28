@@ -18,11 +18,6 @@ RSpec.describe PersonalBestsController, type: :controller do
 
         expect(@new_pb).to eq(User.find(session[:user_id]).personal_bests[:three_by_three])
       end
-
-      # it "makes a new personal best" do
-      #   signed_in_user
-      #   post :change, params: { puzzle_name: "three_by_three", personal_best: FactoryGirl.attributes_for(:personal_bests)[:three_by_three] }
-      # end
     end
   end
 end

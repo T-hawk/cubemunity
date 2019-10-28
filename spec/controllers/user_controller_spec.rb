@@ -15,6 +15,17 @@ RSpec.describe UserController, type: :controller do
       end
     end
 
+    context "already created user" do
+      it "does not create new user" do
+        attributes = FactoryGirl.attributes_for(:user)
+
+        post :create, params: { user: attributes }
+        expect(User.count).to eq(1)
+        post :create, params: { user: attributes }
+        expect(User.count).to eq(1)
+      end
+    end
+
     context "with invalid attributes" do
       it "does not create new user" do
         post :create, params: { user: FactoryGirl.attributes_for(:invalid_user) }
