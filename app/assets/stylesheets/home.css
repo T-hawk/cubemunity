@@ -1,0 +1,38 @@
+body {
+  background: rgb(39, 41, 43);
+}
+
+body a {
+  text-decoration: none;
+  color: white;
+}
+
+.section {
+  padding: 20px;
+  height: 100vh;
+  text-align: center;
+}
+
+#seperator {
+  border-color: rgb(39, 41, 43);
+  border-width: 10px;
+  border-style: solid;
+  margin: 0;
+}
+
+#welcome {
+  color: white;
+  background: -webkit-linear-gradient(45deg, rgb(36, 124, 255), rgb(56, 29, 131));
+  text-align: center;
+  font-size: 2rem;
+}
+
+#timer {
+  background: -webkit-linear-gradient(45deg, rgb(36, 124, 255), rgb(12, 75, 192));
+  font-size: 1.5rem;
+}
+
+#community {
+  background: -webkit-linear-gradient(45deg, rgb(128, 8, 207), rgb(161, 11, 248));
+  font-size: 1.5rem;
+}

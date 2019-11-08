@@ -26,37 +26,41 @@ function documentLoaded() {
   let scramble;
   scramble = scrambleGenerator([], 0);
 
-  document.getElementById('puzzle_name').onchange = function puzzleNameChange() {
-    let puzzleName = document.getElementById('puzzle_name').value;
-    isImplemented = IMPLEMENTED_SCRAMBLES.includes(puzzleName);
-    scramble = scrambleGenerator([], 0);
-    document.getElementById("scramble").innerHTML = scramble.toString()
+  if (document.getElementById('puzzle_name')) {
+    document.getElementById('puzzle_name').onchange = function puzzleNameChange() {
+      let puzzleName = document.getElementById('puzzle_name').value;
+      isImplemented = IMPLEMENTED_SCRAMBLES.includes(puzzleName);
+      scramble = scrambleGenerator([], 0);
+      document.getElementById("scramble").innerHTML = scramble.toString()
+    }
   }
 
-  document.getElementById('manual_personal_best').onclick = function manualPersonalBest() {
-    let puzzleSelect = document.getElementById("puzzle_name");
-    let puzzleSelectIndex = document.getElementById("puzzle_name").selectedIndex;
-    let selectedPuzzle = puzzleSelect.options[puzzleSelectIndex].textContent;
-    let hours;
-    let minutes;
-    let seconds;
+  if (document.getElementById('manual_personal_best') != null) {
+    document.getElementById('manual_personal_best').onclick = function manualPersonalBest() {
+      let puzzleSelect = document.getElementById("puzzle_name");
+      let puzzleSelectIndex = document.getElementById("puzzle_name").selectedIndex;
+      let selectedPuzzle = puzzleSelect.options[puzzleSelectIndex].textContent;
+      let hours;
+      let minutes;
+      let seconds;
 
-    while (!hours || hours % 1 != 0 || hours < 0) {
-      hours = prompt(selectedPuzzle + ": How many hours? (must be a whole number)");
+      while (!hours || hours % 1 != 0 || hours < 0) {
+        hours = prompt(selectedPuzzle + ": How many hours? (must be a whole number)");
+      }
+
+      while (!minutes || minutes >= 60 || minutes % 1 != 0 || minutes < 0) {
+        minutes = prompt("How many minutes? (must be a whole number less than 60)");
+      }
+
+      while (!seconds || seconds >= 60 || seconds < 0 || seconds == "NaN") {
+        seconds = prompt("How many seconds? (must be a less than 60; Can be up to the hundreths place)");
+        seconds = parseFloat(seconds);
+        seconds = seconds.toFixed(2);
+      }
+
+      let time = hours + ":" + minutes + ":" + seconds;
+      newPersonalBest(time, puzzleSelect.options[puzzleSelectIndex].value);
     }
-
-    while (!minutes || minutes >= 60 || minutes % 1 != 0 || minutes < 0) {
-      minutes = prompt("How many minutes? (must be a whole number less than 60)");
-    }
-
-    while (!seconds || seconds >= 60 || seconds < 0 || seconds == "NaN") {
-      seconds = prompt("How many seconds? (must be a less than 60; Can be up to the hundreths place)");
-      seconds = parseFloat(seconds);
-      seconds = seconds.toFixed(2);
-    }
-
-    let time = hours + ":" + minutes + ":" + seconds;
-    newPersonalBest(time, puzzleSelect.options[puzzleSelectIndex].value);
   }
 
   document.addEventListener("turbolinks:load", function() {
@@ -68,7 +72,7 @@ function documentLoaded() {
   document.getElementById("scramble").innerHTML = scramble.toString()
   document.body.onkeyup = function(e) {
     if (e.keyCode === 32) {
-      document.getElementById("timer").style.color = "black"
+      document.getElementById("timer").style.color = "white"
       if (timerStarted) {
 
         // Timer Starts
@@ -84,12 +88,13 @@ function documentLoaded() {
         document.getElementById("scramble").innerHTML = scramble.toString()
 
         let puzzleName = document.getElementById("puzzle_name").value;
-        if (personalBests[puzzleName] && previousTime.centiseconds < convertToCentiSeconds(personalBests[puzzleName])) {
-          newPersonalBest(previousTime.getString(), puzzleName);
-        } else if (!personalBests[puzzleName]) {
-          newPersonalBest(previousTime.getString(), puzzleName);
+        if (personalBests) {
+          if (personalBests[puzzleName] && previousTime.centiseconds < convertToCentiSeconds(personalBests[puzzleName])) {
+            newPersonalBest(previousTime.getString(), puzzleName);
+          } else if (!personalBests[puzzleName]) {
+            newPersonalBest(previousTime.getString(), puzzleName);
+          }
         }
-
       }
     }
   }

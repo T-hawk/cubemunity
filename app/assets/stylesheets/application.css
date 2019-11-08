@@ -2,7 +2,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
 
-  background: white;
+  background: rgb(39, 41, 43);
+  color: white;
   margin: 0;
 }
 
@@ -10,6 +11,9 @@ body {
   text-align: left !important;
 }
 
+.content {
+  padding-left: 10px;
+}
 
 .alert {
   text-align: center;
@@ -108,13 +112,28 @@ img {
 
 .profile-pic {
   border-radius: 100px;
-  width: 50px;
+  width: 35px;
 }
 
 input[type=submit] {
+  border: none;
   border-radius: 100px;
   background: linear-gradient(90deg, #119dcc, #8c4eff);
   color: white;
+}
+
+input[type=text] {
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #119dcc, #8c4eff);
+  color: white;
+
+  width: 30%;
+
+  padding: 5px;
+  word-wrap: break-word;
+  margin: 10px;
 }
 
 #logout {

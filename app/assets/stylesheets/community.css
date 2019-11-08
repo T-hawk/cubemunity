@@ -1,14 +1,36 @@
-.posts-and-comments a {
-  color: black;
+body {
+  color: white;
+  background: rgb(37, 39, 43);
+}
+
+body a {
+  color: white;
+}
+
+.post a {
+  color: white;
   text-decoration: none;
 }
 
-.content {
-  padding-left: 5px;
+.post-content {
+  padding-left: 20px;
+  font-size: 1.3rem;
+}
+
+.comments {
+  background: #000428;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  border-radius: 10px;
+
+  padding: 5px;
+  padding-left: 15px;
 }
 
 .comment {
   padding-left: 50px;
+
 }
 
 #like {
@@ -17,11 +39,12 @@
   font-size: 2rem;
 }
 
-.posts-and-comments {
-  border-style: solid;
-  border-color: rgb(131, 131, 131);
-  border-width: 2px;
+.post {
   border-radius: 10px;
 
   padding: 10px;
+
+  margin-top: 1%;
+  margin-left: 4%;
+  margin-right: 4%;
 }

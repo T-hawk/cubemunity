@@ -1,17 +1,23 @@
-<% @posts.each do |post| %>
+<% @posts.reverse.each do |post| %>
   <% @post = post %>
-  <div class="posts-and-comments">
-    <h3 class="title"><%= link_to "#{@post[:title]}", @post %> </h3>  <%= link_to user_gravatar(@post.user), @post.user %><%= link_to @post.user.username, @post.user %>
-    <p>
-      <%= post.likes.count %> <%= (post.likes.count) == 1 ? "like" : "likes" %>
-    </p>
+  <div class="post", id="<%= post.id %>">
+    <%= hidden_field_tag :like_count, post.likes.count %>
+    <h2 class="title"><%= link_to "#{@post[:title]}", @post %>    <%= link_to user_gravatar(@post.user), @post.user %><%= link_to @post.user.username, @post.user %></h2>
+    <p class="post-content"><%= @post[:content] %></p>
+    <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? "like" : "likes" %></p>
     <% if @signed_in_user %>
       <%= button_to "&#128077;".html_safe, { :controller => "likes", :action => "create", :post_id => @post.id }, :method => :post, :id => "like" %>
     <% end %>
-    <p class="content"><%= @post[:content] %></p>
     <br>
-    <%= render "comment/show" %>
-    <%= render "comment/new", :params => { :post_id => @post.id } %>
+    <div class="comments">
+      <h3>Comments:</h3>
+      <%= render "comment/show" %>
+      <% if @signed_in_user %>
+        <%= render "comment/new", :params => { :post_id => @post.id } %>
+      <% else %>
+        <p>Sign in or Sign up to comment on this post</p>
+      <% end %>
+    </div>
   </div>
   <br>
 <% end %>

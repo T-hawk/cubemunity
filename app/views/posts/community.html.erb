@@ -1,6 +1,9 @@
 <%= provide(:title, "Cubemunity | Community") %>
 <%= stylesheet_link_tag "community.css" %>
 
+<%= javascript_include_tag "community" %>
+<%= javascript_include_tag "helper" %>
+
 <%= render "posts/show" %>
 
 <% if @signed_in_user %>

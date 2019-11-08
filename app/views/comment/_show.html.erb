@@ -1,3 +1,3 @@
-<% @post.comments.each do |comment| %>
-  <p class="comment"><%= comment.content %><% link_to comment.user.username, comment.user %></p>
+<% @post.comments.reverse.each do |comment| %>
+  <p class="comment"><%= comment.content %> <%= link_to user_gravatar(comment.user), comment.user %> <%= link_to comment.user.username, comment.user %></p>
 <% end %>

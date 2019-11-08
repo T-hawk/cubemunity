@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     if !already_liked?
       @post.likes.create(user_id: @signed_in_user.id)
     end
-    redirect_to @post
+    redirect_to community_path(anchor: @post.id)
   end
 
   def get_post

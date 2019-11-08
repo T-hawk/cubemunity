@@ -1,5 +1,9 @@
 <%= stylesheet_link_tag 'user' %>
 <% provide(:title, @user.username) %>
+<%= stylesheet_link_tag "community.css" %>
+
+<%= javascript_include_tag "community" %>
+<%= javascript_include_tag "helper" %>
 <h1>
   <%= user_gravatar(@user) %>
   <br>
