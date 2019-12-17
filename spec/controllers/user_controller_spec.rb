@@ -4,10 +4,10 @@ require 'pp'
 RSpec.describe UserController, type: :controller do
 
   describe "POST #create" do
-    before :each do 
+    before :each do
       User.delete_all
     end
-    
+
     context "with valid attributes" do
       it "create new user" do
         post :create, params: { user: FactoryGirl.attributes_for(:user) }

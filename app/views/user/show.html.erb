@@ -7,10 +7,13 @@
 <h1>
   <%= user_gravatar(@user) %>
   <br>
-  <% if !(@signed_in_user.already_following? @user) %>
-    <%= @user.username %><%= button_to "Follow", {controller: "user", action: "follow"}, params: { following_id: @user.id, follower_id: @signed_in_user.id } if @signed_in_user && @signed_in_user.id != @user.id %>
-  <% else %>
-    <%= @user.username %><%= button_to "Unfollow", {controller: "user", action: "unfollow"}, params: { following_id: @user.id, follower_id: @signed_in_user.id } if @signed_in_user && @signed_in_user.id != @user.id %>
+
+  <% if @signed_in_user %>
+    <% if !(@signed_in_user.already_following? @user) %>
+        <%= @user.username %><%= button_to "Follow", {controller: "user", action: "follow"}, params: { following_id: @user.id, follower_id: @signed_in_user.id } if @signed_in_user && @signed_in_user.id != @user.id %>
+    <% else %>
+        <%= @user.username %><%= button_to "Unfollow", {controller: "user", action: "unfollow"}, params: { following_id: @user.id, follower_id: @signed_in_user.id } if @signed_in_user && @signed_in_user.id != @user.id %>
+    <% end %>
   <% end %>
   <br>
 </h1>
