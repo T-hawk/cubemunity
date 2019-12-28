@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :remember_me
+  attr_accessor :remember_token, :remember_me, :remember_digest
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 255 }, format: { with:  VALID_EMAIL_REGEX }
@@ -18,10 +18,6 @@ class User < ApplicationRecord
 
   has_many :following_relationships, foreign_key: :user_id, class_name: "Follow"
   has_many :following, through: :following_relationships, source: :following
-
-  after_save do
-    self.create_personal_bests
-  end
 
   def remember
     update_attribute(:remember_token, SecureRandom.uuid)
