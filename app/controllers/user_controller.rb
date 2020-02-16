@@ -1,4 +1,5 @@
 require "pp"
+require "json"
 
 class UserController < ApplicationController
   def show

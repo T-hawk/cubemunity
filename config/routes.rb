@@ -31,5 +31,17 @@ Rails.application.routes.draw do
   get "/timer" => "main#timer"
   get "/fcs" => "main#fcs"
 
+  # API
+    # User
+    get "/api/user/:user_id" => "api#get_user"
+    get "/api/user/pb/:user_id" => "api#get_user_pb"
+    post "/api/sessions/create" => "api#create_session"
+    post "/api/user/create" => "api#create_user"
+
+    # Post
+    get "api/posts" => "api#get_posts"
+    post "api/posts/create" => "api#create_post"
+    get "/api/comments/:post_id" => "api#get_post_comments"
+
   resources :user
 end

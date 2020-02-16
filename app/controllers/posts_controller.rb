@@ -1,3 +1,5 @@
+require 'json'
+
 class PostsController < ApplicationController
   def community
     @posts = Post.all

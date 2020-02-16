@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_224739) do
+ActiveRecord::Schema.define(version: 2020_01_11_230302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_10_13_224739) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_token"
+    t.string "api_token"
   end
 
 end
