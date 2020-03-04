@@ -4,6 +4,9 @@ class ApiController < ApplicationController
 
   before_action :authenticate, :except => :create_session
 
+  include ApiHelper
+
+
   def get_user
     if @authenticated
       @user = User.find(params[:user_id])
@@ -77,7 +80,7 @@ class ApiController < ApplicationController
   def create_session
     @user = User.find_by(email: params["email"].downcase)
     if @user && @user.authenticate(params["password"])
-      token = (0...8).map { (65 + rand(26)).chr }.join
+      token = generate_token
 
       @user.update_attribute(:api_token, token)
       render plain: token
@@ -89,7 +92,7 @@ class ApiController < ApplicationController
   def create_user
     @user = User.new(user_params)
     if @user.save
-      token = (0...8).map { (65 + rand(26)).chr }.join
+      token = generate_token
 
       @user.update_attribute(:api_token, token)
       render plain: token
@@ -108,7 +111,7 @@ class ApiController < ApplicationController
 
   private
     def authenticate
-      if User.find_by(api_token: params[:token])
+      if params[:token] && User.find_by(api_token: params[:token])
         @authenticated = true
       else
         @authenticated = false
